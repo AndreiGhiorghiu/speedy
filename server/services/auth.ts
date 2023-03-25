@@ -8,12 +8,7 @@ export default {
         data.role = JSON.stringify(data?.role || ['guest']);
 
         const user = await prisma.user.create({
-            data: {
-                ...data,
-                settings: {
-                    create: {},
-                },
-            },
+            data,
         });
 
         return user;
