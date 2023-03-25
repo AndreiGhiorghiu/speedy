@@ -1,0 +1,36 @@
+{
+  "compilerOptions": {
+    "strict": true,
+    "incremental": true,
+    "skipLibCheck": true,
+    "sourceMap": true,
+    "inlineSources": true,
+    "declaration": true,
+    "declarationMap": true,
+    "allowSyntheticDefaultImports": true,
+    "forceConsistentCasingInFileNames": true,
+
+    "target": "ESNext",
+    "module": "ESNext",
+    "moduleResolution": "Node",
+    "resolveJsonModule": true,
+    "jsx": "react",
+
+    "baseUrl": "./",
+
+    "paths": {
+      "$utils/*": ["./server/utils/*"],
+      "$services/*": ["./server/services/*"],
+      "$root/*": ["./*"],
+      "$server/*": ["./server/*"],
+      "$apis/*": ["./server/apis/*"],
+      "$client/*": ["./client/*"],
+      "$client/types": ["./client/types.d.ts"],
+      "$application/*": ["./client/src/application/*"],
+      "$static/*": ["./client/static/*"],
+      "$views/*": ["./client/views/*"],
+      "$entities.types": ["./entities.types.ts"],
+      "$ztypes/*": ["./ztypes/*"]
+    }
+  }
+}
