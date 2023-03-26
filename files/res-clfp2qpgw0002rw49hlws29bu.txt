@@ -1,0 +1,66 @@
+FlipversX deployment
+
+Gen1Rewards: erd1zpps3h5mygxr04w3k97hzg4pfjzhamt03ymdm86sn3020jgj6hgq0um7m7
+Gen2Rewards: erd1qhymgtkzlp2ej74qspz4cxvpu5wcsljq6euawh4z42ur5anvdqps8qvgvk
+
+@Internal
+
+[<-----= Mainnet erd1qqqqqqqqqqqqqpgq96c0ven9w7w6qh8v4vdh4eqnudcl8ea46hgqun966g =----->]
+    mxpy --verbose contract upgrade erd1qqqqqqqqqqqqqpgq96c0ven9w7w6qh8v4vdh4eqnudcl8ea46hgqun966g \
+    --arguments \
+        erd1qqqqqqqqqqqqqpgq85vuftjpsdsklr3pnuylhr7hmkgrkk8cka3ss6a4l6 \
+        erd1zpps3h5mygxr04w3k97hzg4pfjzhamt03ymdm86sn3020jgj6hgq0um7m7 \
+        erd1qhymgtkzlp2ej74qspz4cxvpu5wcsljq6euawh4z42ur5anvdqps8qvgvk \
+        erd12rw5h9jwe4pzgtqd4wn5yejlekn4uhv9rp0elp3emaa7vqlvjh7ss0uza8 \
+    --project=fvx-internal \
+    --recall-nonce \
+    --pem="7m7-s0.pem" \
+    --gas-limit=90000000 \
+    --proxy="https://gateway.multiversx.com" \
+    --chain=1 \
+    --send
+[<-----==----->]
+
+[<-----= Devnet erd1qqqqqqqqqqqqqpgqk2ht9963lhmde24r720g4wwz8n88jhlw6hgq87fnzk =----->]
+    mxpy --verbose contract upgrade erd1qqqqqqqqqqqqqpgqk2ht9963lhmde24r720g4wwz8n88jhlw6hgq87fnzk \
+    --arguments \
+        erd1qqqqqqqqqqqqqpgqx9a2f4zu9n234y4dreencxjmvy0p6rqska3sejpgsj \
+        erd1zpps3h5mygxr04w3k97hzg4pfjzhamt03ymdm86sn3020jgj6hgq0um7m7 \
+        erd1qhymgtkzlp2ej74qspz4cxvpu5wcsljq6euawh4z42ur5anvdqps8qvgvk \
+    --project=fvx-internal \
+    --recall-nonce \
+    --pem="7m7-s0.pem" \
+    --gas-limit=20000000 \
+    --proxy="https://devnet-gateway.multiversx.com" \
+    --chain=D \
+    --send
+[<-----==----->]
+
+
+
+
+@Main
+
+[<-----= Mainnet erd1qqqqqqqqqqqqqpgq85vuftjpsdsklr3pnuylhr7hmkgrkk8cka3ss6a4l6 =----->]
+    mxpy --verbose contract upgrade erd1qqqqqqqqqqqqqpgq85vuftjpsdsklr3pnuylhr7hmkgrkk8cka3ss6a4l6 \
+    --arguments erd1qqqqqqqqqqqqqpgq96c0ven9w7w6qh8v4vdh4eqnudcl8ea46hgqun966g \
+    --project=fvx-main \
+    --recall-nonce \
+    --pem="flkr-s1.pem" \
+    --gas-limit=90000000 \
+    --proxy="https://gateway.multiversx.com" \
+    --chain=1 \
+    --send
+[<-----==----->]
+
+[<-----= Devnet erd1qqqqqqqqqqqqqpgqx9a2f4zu9n234y4dreencxjmvy0p6rqska3sejpgsj =----->]
+    mxpy --verbose contract upgrade erd1qqqqqqqqqqqqqpgqx9a2f4zu9n234y4dreencxjmvy0p6rqska3sejpgsj \
+    --arguments erd1qqqqqqqqqqqqqpgqk2ht9963lhmde24r720g4wwz8n88jhlw6hgq87fnzk \
+    --project=fvx-main \
+    --recall-nonce \
+    --pem="flkr-s1.pem" \
+    --gas-limit=90000000 \
+    --proxy="https://devnet-gateway.multiversx.com" \
+    --chain=D \
+    --send
+[<-----==----->]

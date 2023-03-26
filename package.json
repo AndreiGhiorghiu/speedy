@@ -1,18 +1,18 @@
 {
-  "name": "deko-shop",
+  "name": "speedy",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "server": "nodemon -x './server/esbuild.js server | pino-pretty' -w server -e ts,js,json,tsx,env",
-    "client": "vite --config client/vite.config.ts"
+    "server": "nodemon -x './server/esbuild.js server | pino-pretty' -w server -e ts,js,json,tsx,env"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "@fastify/cookie": "^8.1.0",
     "@fastify/formbody": "^7.2.0",
+    "@fastify/multipart": "^7.5.0",
     "@fastify/session": "^10.0.0",
     "@prisma/client": "^4.4.0",
     "@radix-ui/react-dialog": "^1.0.0",
@@ -20,6 +20,7 @@
     "@stitches/core": "^1.2.8",
     "@types/kind-of": "^6.0.0",
     "array-move": "^4.0.0",
+    "axios": "^1.3.4",
     "bitcoinjs-lib": "^6.1.0",
     "bootstrap": "^5.0.1",
     "bs58": "^5.0.0",
@@ -46,7 +47,6 @@
     "qs": "^6.11.0",
     "react": "^18.2.0",
     "react-beautiful-dnd": "^13.1.1",
-    "axios": "^1.3.4",
     "react-chartjs-2": "^4.3.1",
     "react-dom": "^18.2.0",
     "react-feather": "^2.0.10",

@@ -1,0 +1,65 @@
+1. pe grid, primary, nu ne pasa, nu vrem sa controlam
+2. cand setam o limita, o setam pentru secondary (generator, baterie)
+3. the power limit has no importance for the primary 
+4. 2444 e ce consum acum si 4556 e ce mai am ramas pe baterie 
+5. do you want the user to know when there is no power outage?
+
+6. what impact has the grid power on the breakermates ?
+
+
+
+
+primary:
+on grid -- all breakermates off - home powered normallly
+no loadshed
+
+
+
+
+secondary:
+(toggle button for automatic loadshedding and automatic loadshedding)
+
+
+
+
+app can switch from primary to secondary
+
+
+auto mode -> start load shedding
+manual mode - no load shedding
+
+
+automatic = ?
+
+
+
+
+
+
+what means manual / automatic
+do we really need bluetooth?
+
+
+
+
+
+if the firmware handles the delay, then the app needs to have the possibility to switch
+from primary to secondary?
+
+
+[riority list, ce conteaza?]
+
+
+
+each hub has his own limit
+
+app reflects the hub state (grid or generator)
+
+
+(backup/utility)
+
+main / secondary you can loadshed
+loadshedding is the same
+
+
+

@@ -28,7 +28,7 @@ const logger = pino(
 
 fastify.connect = async (port?: number) => {
   await fastify.listen({
-    host: 'localhost',
+    host: CONFIG.HTTP_HOST || 'localhost',
     port: port || Number(CONFIG.HTTP_PORT),
   });
 
