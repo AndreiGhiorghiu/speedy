@@ -140,3 +140,87 @@ route({
     }
   },
 });
+
+route({
+  method: 'POST',
+  url: '/api/v1/train-text/:projectId',
+  accept: ['guest'],
+  handler: async function (
+    req: FastifyRequest<{
+      Body: { text: string };
+      Params: { projectId: string };
+    }>,
+    rep: FastifyReply
+  ) {
+    try {
+      const { text } = req.body;
+      const { projectId } = req.params;
+
+      if (text) {
+        const id = text.split(' ').slice(0, 6).join('-');
+        const filePath = path.join(__dirname, '..', 'files', `${id}.txt`);
+
+        if (cache.get(id)) {
+          return cache.get(id) || [];
+        }
+
+        const result = text;
+
+        await $data.create(projectId, `${id}.txt`);
+
+        fs.writeFileSync(filePath, result);
+
+        const responseData = await $openai.train(result);
+
+        const dataJson = JSON.parse(
+          responseData?.choices?.[0]?.message?.content || '[]'
+        );
+
+        let ids = 0;
+        const finalData = Object.entries(dataJson).reduce(
+          (total: any, [label, tasks]: any) => {
+            tasks.forEach((text: string) => {
+              ids += 1;
+
+              total.push({
+                id: ids,
+                title: text,
+                label: label,
+                storyPoints: '0P',
+              });
+            });
+
+            return total;
+          },
+          []
+        );
+
+        const response = await axios.post(
+          'http://127.0.0.1:5000/sp-estimation',
+          {
+            titles: finalData.map((item: any) => item.title),
+          },
+          {
+            headers: {
+              'Content-Type': 'application/json',
+            },
+          }
+        );
+
+        const final = finalData.map((item, index) => ({
+          ...item,
+          storyPoints: `${response.data.storypoints[index]}P`,
+        }));
+
+        cache.set(id, final);
+
+        return rep.send(final || []);
+      }
+
+      return rep.send([]);
+    } catch (error) {
+      rep.code(500);
+      rep.send({ error: error.message });
+    }
+  },
+});
